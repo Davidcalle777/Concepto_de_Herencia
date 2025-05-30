@@ -5,7 +5,7 @@ import modelos.Profesor;
 import conexion.Conexion;
 
 public class Main {
-    // ✅ CONSTANTES
+    // ✅ CONSTANTE
     private static final int MAX_PROFESORES = 50;
     private static final Profesor[] profesores = new Profesor[MAX_PROFESORES];
     // ✅ MÉTODO PRINCIPAL
