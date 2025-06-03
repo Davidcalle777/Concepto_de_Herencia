@@ -8,7 +8,7 @@ public class Profesor extends Persona {
     }
     // Método para obtener el nombre completo del profesor
     @Override
-    public String toStrin() {
+    public String toString() {
         return getNombre() + " " + getApellido();
     }
 }
