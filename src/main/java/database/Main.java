@@ -1,8 +1,11 @@
+package database;
 
 import java.sql.*;
 import java.util.Scanner;
 import modelos.Profesor;
 import conexion.Conexion;
+
+import static modelos.Profesor.listarProfesores;
 
 public class Main {
     // ✅ CONSTANTE
@@ -108,5 +111,6 @@ public class Main {
             System.out.println("Error al insertar en la base de datos:");
             e.printStackTrace();
         }
+        listarProfesores();
     }
 }
