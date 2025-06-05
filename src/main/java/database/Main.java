@@ -34,7 +34,24 @@ public class Main {
             System.out.print("Peso (kg): ");
             double peso = Double.parseDouble(scanner.nextLine());
 
-            Profesor profesor = new Profesor(nombre, apellido, fechaNacimiento, genero, estatura, peso);
+            System.out.print("Especialidad: ");
+            String especialidad = scanner.nextLine();
+
+            System.out.print("Salario: ");
+            double salario = Double.parseDouble(scanner.nextLine());
+
+            System.out.print("Años de experiencia: ");
+            int aniosExperiencia = Integer.parseInt(scanner.nextLine());
+
+            System.out.print("Título académico: ");
+            String tituloAcademico = scanner.nextLine();
+
+
+            Profesor profesor = new Profesor(
+                    nombre, apellido, fechaNacimiento, genero,
+                    estatura, peso, especialidad, salario, aniosExperiencia, tituloAcademico
+            );
+
             profesores[contador] = profesor;
 
             insertarProfesorEnBD(profesor);
@@ -79,9 +96,14 @@ public class Main {
                     int idPersona = rs.getInt(1);
 
                     // ✅ INSERCIÓN EN LA TABLA PROFESOR
-                    String sqlProfesor = "INSERT INTO profesor (id) VALUES (?)";
+                    String sqlProfesor = "INSERT INTO profesor (id, especialidad, salario, anios_experiencia, titulo_academico) VALUES (?, ?, ?, ?, ?)";
                     PreparedStatement stmtProfesor = conn.prepareStatement(sqlProfesor);
                     stmtProfesor.setInt(1, idPersona);
+                    stmtProfesor.setString(2, profesor.getEspecialidad());
+                    stmtProfesor.setDouble(3, profesor.getSalario());
+                    stmtProfesor.setInt(4, profesor.getAniosExperiencia());
+                    stmtProfesor.setString(5, profesor.getTituloAcademico());
+
                     // ✅ EJECUTANDO LA INSERCIÓN EN PROFESOR
                     int filasProfesor = stmtProfesor.executeUpdate();
 
