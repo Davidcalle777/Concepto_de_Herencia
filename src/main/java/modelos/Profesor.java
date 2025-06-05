@@ -37,4 +37,14 @@ public class Profesor extends Persona {
     public String toString() {
         return getNombre() + " " + getApellido();
     }
+
+    public static void listarProfesores() {
+        System.out.println("\n📋 Profesores registrados:");
+        for (Profesor prof : profesores) {
+            if (prof != null) {
+                System.out.println(" - " + prof);
+            }
+        }
+    }
+
 }
